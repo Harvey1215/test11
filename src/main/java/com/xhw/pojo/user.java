@@ -21,6 +21,10 @@ public class user {
         this.uname = uname;
     }
 
+public void re(){
+        System.out.println(4545);
+
+}
     public int getUage() {
         return uage;
     }
