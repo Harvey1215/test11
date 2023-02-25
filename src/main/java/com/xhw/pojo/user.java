@@ -28,6 +28,9 @@ public void re(){
     public int getUage() {
         return uage;
     }
+    public void setl(){
+        System.out.println(1212);
+    }
 
     public void setUage(int uage) {
         this.uage = uage;
