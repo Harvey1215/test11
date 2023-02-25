@@ -21,9 +21,11 @@ public class user {
         this.uname = uname;
     }
 
-
     public int getUage() {
         return uage;
+    }
+    public void setl(){
+        System.out.println(1212);
     }
 
     public void setUage(int uage) {
