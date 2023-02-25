@@ -21,6 +21,7 @@ public class user {
         this.uname = uname;
     }
 
+
     public int getUage() {
         return uage;
     }

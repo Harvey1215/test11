@@ -14,5 +14,6 @@
     select *
     from users
     where uid =#{id}
+
 </select>
 </mapper>
