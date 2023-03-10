@@ -15,16 +15,20 @@
 
 
     <dependencies>
+<!--    mybaties    -->
         <dependency>
             <groupId>org.mybatis</groupId>
             <artifactId>mybatis</artifactId>
             <version>3.5.2</version>
         </dependency>
+<!--        mysql 驱动-->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.13</version>
+            <scope>runtime</scope>
         </dependency>
+<!--       单元测试-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

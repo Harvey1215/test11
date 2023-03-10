@@ -1,19 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-        <!DOCTYPE mapper
-                PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
-                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-        <!-- mapper为映射的根节点-->
-        <!-- mapper为映射的根节点，namespace指定Dao接口的完整类名
-        mybatis会依据这个接口动态创建一个实现类去实现这个接口，
-        而这个实现类是一个Mapper对象-->
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper为映射的根节点-->
+<!-- mapper为映射的根节点，namespace指定Dao接口的完整类名
+mybatis会依据这个接口动态创建一个实现类去实现这个接口，
+而这个实现类是一个Mapper对象-->
 <mapper namespace="com.xhw.pojo.user">
-<!--id ="接口中的方法名"
-　　parameterType="传入的参数类型"
-　　resultType = "返回实体类对象，使用包.类名"-->
-<select id="findById" parameterType="int" resultType="com.xhw.pojo.user">
-    select *
-    from users
-    where uid =#{id}
+    <!--id ="接口中的方法名"
+    　　parameterType="传入的参数类型"
+    　　resultType = "返回实体类对象，使用包.类名"-->
 
-</select>
+    <!--<select id="findById" parameterType="int" resultType="user">-->
+    <!--    select *-->
+    <!--    from users-->
+    <!--    where uid =#{id}-->
+
+    <!--</select>-->
+    <!--    <sql id="tableName">from-->
+    <!--        &lt;!&ndash;        <include refid="${include_t}"></include>&ndash;&gt;-->
+    <!--        ${include_t}-->
+
+    <!--    </sql>-->
+    <!--    <sql id="table_columns"> uid-->
+    <!--    ,uage,uname</sql>-->
+    <!--    <select id="select01" parameterType="int" resultType="user">-->
+    <!--        select-->
+    <!--        <include refid="table_columns"></include>-->
+    <!--        <include refid="tableName">-->
+    <!--            <property name="include_t" value="users"/>-->
+    <!--        </include>-->
+    <!--        where uid=#{uid}-->
+    <!--    </select>-->
+
+
+    <!--    <insert id="addUser"-->
+    <!--            parameterType="user">-->
+    <!--        insert  into users (uid,uname,uage) values (#{uid},#{uname},#{uage})-->
+    <!--    </insert>-->
+
+    <!--    <update id="updateUser" parameterType="user">-->
+    <!--        update  users set uage=#{uage} where uid=#{uid}-->
+    <!--    </update>-->
+
+    <!--    <select id="ifFind" parameterType="user" resultType="user">-->
+    <!--        select * from users-->
+    <!--        <where>-->
+    <!--            <if test="uname !=null and uname!=''">-->
+    <!--                and uname like concat('%',#{uname},'%')-->
+    <!--            </if>-->
+
+    <!--            <if test="uid !=null and uid!=''">-->
+    <!--                and uid=#{uid}-->
+    <!--            </if>-->
+    <!--        </where>-->
+    <!--    </select>-->
+
+    <!--    <select id="ifFind" parameterType="user" resultType="user">-->
+    <!--        select * from users-->
+    <!--        <trim prefix="where" prefixOverrides="and ">-->
+    <!--            <if test="uname !=null and uname!=''">-->
+    <!--                and uname like concat('%',#{uname},'%')-->
+    <!--            </if>-->
+
+    <!--            <if test="uid !=null and uid!=''">-->
+    <!--                and uid=#{uid}-->
+    <!--            </if>-->
+    <!--        </trim>-->
+    <!--    </select>-->
+
+
+    <update id="up_user" parameterType="user">
+        update users
+        <set>
+            <if test="uname !=null and uname!=''">
+                uname =#{uname},
+            </if>
+            <if test=" uage!=null and uage!=''">
+                uage=#{uage},
+            </if>
+        </set>
+        where uid=#{uid}
+
+
+    </update>
+    <!--    <select id="ifFind" parameterType="user" resultType="user">-->
+    <!--        select * from users where 1=1-->
+    <!--        <choose>-->
+    <!--            <when test="uname !=null and uname!=''">and uname like concat('%',#{uname},'%')</when>-->
+    <!--            <when test="uid!=null and uid!=''"> and uid=#{uid}</when>-->
+    <!--            <otherwise>and uage=#{uage}</otherwise>-->
+    <!--        </choose>-->
+
+
+    <!--    </select>-->
+
+    <!--    <select id=""-->
 </mapper>
+
