@@ -3,7 +3,36 @@
         PUBLIC "-//mybatis.org//DTD mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.xhw.pojo.user">
+<mapper namespace="com.xhw.pojo.Users">
+<!-- 一对多 -->
+    <select id="findUserOrders" parameterType="Integer" resultMap="User_Order_Result">
+        select u.*,o.id as orders_id ,o.number
+         from tb_orders o,tb_user u
+         where u.id=o.user_id and u.id=#{id}
+    </select>
+   <resultMap id="User_Order_Result" type="Users">
+       <id property="id" column="id"/>
+       <result property="username" column="username"/>
+       <result column="address" property="address"/>
 
-
+       <collection property="ordersList" ofType="Orders">
+           <id property="id" column="orders_id"/>
+           <result property="number" column="number"/>
+       </collection>
+   </resultMap>
+<!-- 多对多-->
+    <select id="Find_Product_ById" parameterType="Integer" resultMap="Product">
+       select o.*, p.id as pid ,p.name ,p.price
+        from tb_ordersitem oi,tb_orders o ,tb_product p
+        where oi.orders_id=o.id and oi.product_id=p.id and o.id=#{id}
+    </select>
+    <resultMap id="Product" type="Orders">
+        <id property="id" column="id"/>
+        <result property="number" column="number"/>
+        <collection property="productList" ofType="Product">
+            <id column="pid" property="id"/>
+            <result property="name" column="name"/>
+            <result column="price" property="price"/>
+        </collection>
+    </resultMap>
 </mapper>

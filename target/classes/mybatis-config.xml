@@ -40,6 +40,7 @@
 <!--   引入配置文件-->
     <mappers>
         <mapper resource="mapper/userMapper.xml"/>
+        <mapper resource="yingshe/yingshe.xml"/>
     </mappers>
 
 </configuration>
